@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, ChangeEvent } from "react";
+import "./App.css";
+import { convertUnit } from "./conversions/unitConversions";
 
 function App() {
+  const [value, setValue] = useState<string>();
+  const [from, setFrom] = useState<string>();
+  const [to, setTo] = useState<string>();
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>TJONG</h1>
+      <input value={value} onChange={handleInputChange} />
+      <p>{value}: Value check</p>
+      <select></select>
+      <p>{convertUnit("10", "km", "miles")}</p> {/* Temp test */}
     </div>
   );
 }
