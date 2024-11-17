@@ -17,8 +17,20 @@ const massConversions = {
   lbsToKg: 0.453592,
 };
 
-export const convertUnit = (passedValue: string, from: string, to: string) => {
-  const value = parseFloat(passedValue);
+export const convertUnit = (
+  passedValue: number | undefined,
+  from: string | undefined,
+  to: string | undefined,
+) => {
+  // const value = parseFloat(passedValue);
+  let value = 0;
+  if (passedValue !== undefined) {
+    console.log("Passed");
+    value = passedValue;
+  } else {
+    console.error("Passed value is undefined");
+  }
+
   switch (`${from}-${to}`) {
     case "C-F":
       return tempConversions.cToF(value);
